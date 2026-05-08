@@ -1,5 +1,7 @@
 # Terminology Syndication Feed IG
 
+**Published:** <https://fhir.github.io/fhir-syndication-ig/>
+
 FHIR Implementation Guide specifying the Atom-based terminology
 syndication feed format. Documents the feed and entry shape, field
 semantics, cross-field constraints, the controlled vocabularies used
