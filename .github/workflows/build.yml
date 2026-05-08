@@ -22,6 +22,16 @@ jobs:
         with:
           node-version: '20'
 
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+
+      - name: Install Jekyll
+        run: |
+          export GEM_HOME="$HOME/gems"
+          export PATH="$HOME/gems/bin:$PATH"
+          gem install jekyll bundler
+
       - name: Install SUSHI
         run: npm install -g fsh-sushi
 
@@ -36,7 +46,10 @@ jobs:
         run: ./_updatePublisher.sh
 
       - name: Build IG
-        run: ./_genonce.sh -no-sushi-trace
+        run: |
+          export GEM_HOME="$HOME/gems"
+          export PATH="$HOME/gems/bin:$PATH"
+          ./_genonce.sh -no-sushi-trace
 
       - name: Upload built IG
         uses: actions/upload-artifact@v4
