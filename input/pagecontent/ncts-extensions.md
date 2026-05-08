@@ -73,15 +73,23 @@ Repeats once per profile. Only meaningful for FHIR artefacts.
 
 #### `ncts:bundleInterpretation`
 
-For artefacts that are FHIR Bundles: how the consumer SHOULD load
-the bundle.
+For artefacts that are FHIR Bundles: a publisher hint describing
+how the publisher views the Bundle's contents.
 
 | Cardinality | Type | Permitted values |
 |-------------|------|------------------|
 | 0..1 | code | `batch`, `collection` |
 
-When absent for a Bundle artefact, consumers SHOULD default to
-`batch`. Codes correspond to the FHIR `Bundle.type` value set.
+The value indicates *why the Bundle is included in the feed* —
+either as an independent batch of operations (`batch`) or as a
+curated collection of resources (`collection`). Codes correspond to
+the FHIR `Bundle.type` value set.
+
+This is a hint, not a directive. A consumer that retrieves the
+Bundle remains free to process it however it sees fit, and is not
+obliged to use the publisher's interpretation. Absence means the
+publisher offers no hint and the consumer has full discretion; it
+is **not** a default value.
 
 ### Link-level attributes
 

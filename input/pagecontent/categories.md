@@ -36,7 +36,7 @@ The full set of terms is defined as a CodeSystem in this guide:
 | `FHIR_ValueSet` | FHIR ValueSet | A single FHIR ValueSet resource. |
 | `FHIR_ConceptMap` | FHIR ConceptMap | A single FHIR ConceptMap resource. |
 | `FHIR_StructureDefinition` | FHIR StructureDefinition | A single FHIR StructureDefinition resource. |
-| `FHIR_Bundle` | FHIR Bundle | A FHIR Bundle resource. The entry's `bundleInterpretation` element specifies `batch` or `collection`. |
+| `FHIR_Bundle` | FHIR Bundle | A FHIR Bundle resource. The entry's `bundleInterpretation` element, when present, hints at the publisher's view of the Bundle (`batch` or `collection`). |
 | `FHIR_Package` | FHIR Package | A FHIR NPM (`tgz`) package. |
 | `LOINC` | LOINC | A LOINC release artefact. |
 | `BINARY_RETRACT` | Binary Index Retract | Retracts a previously-published Ontoserver RF2 binary index. See [Retraction](#retraction). |

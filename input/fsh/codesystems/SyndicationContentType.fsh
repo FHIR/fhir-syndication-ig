@@ -30,7 +30,7 @@ linked artefact.
 * #FHIR_ValueSet "FHIR ValueSet" "A single FHIR ValueSet resource."
 * #FHIR_ConceptMap "FHIR ConceptMap" "A single FHIR ConceptMap resource."
 * #FHIR_StructureDefinition "FHIR StructureDefinition" "A single FHIR StructureDefinition resource."
-* #FHIR_Bundle "FHIR Bundle" "A FHIR Bundle resource. The entry's `bundleInterpretation` element specifies whether the consumer SHOULD process it as `batch` or `collection`."
+* #FHIR_Bundle "FHIR Bundle" "A FHIR Bundle resource. The entry's `bundleInterpretation` element, when present, hints at the publisher's view of the Bundle (`batch` or `collection`); the consumer is not obliged to follow the hint."
 * #FHIR_Package "FHIR Package" "A FHIR NPM (`tgz`) implementation guide / package."
 
 // ── Other terminologies ───────────────────────────────────────────────────

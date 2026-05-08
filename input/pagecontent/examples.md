@@ -173,6 +173,8 @@ Notes:
 
 Notes:
 
-- Because the category is `FHIR_Bundle`, `ncts:bundleInterpretation`
-  declares the load semantics. Without it, consumers default to
-  `batch`.
+- Because the category is `FHIR_Bundle`, the entry MUST carry
+  `ncts:fhirVersion`. The `ncts:bundleInterpretation` element is
+  optional; when present (`batch` or `collection`) it hints at the
+  publisher's view of the Bundle. The consumer remains free to
+  handle the Bundle however it sees fit.
