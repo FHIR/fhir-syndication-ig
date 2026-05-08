@@ -61,6 +61,7 @@ menu:
   Security: security.html
   Examples: examples.html
   Artifacts: artifacts.html
+  GitHub: https://github.com/FHIR/fhir-syndication-ig
 
 parameters:
   show-inherited-invariants: 'false'
