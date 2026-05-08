@@ -64,6 +64,36 @@ For a SNOMED CT extension or derivative, dependencies on other
 SNOMED packages are declared via `sct:packageDependency` — see
 [SNOMED CT Extensions](sct-extensions.html).
 
+### Retraction entries
+
+An entry whose category in the NCTS ASF scheme is one of the
+`*_RETRACT` terms is a **retraction**: a directive that consumers
+SHOULD un-load (or otherwise mark as withdrawn) the artefact
+identified by `(contentItemIdentifier, contentItemVersion)`.
+
+Field-by-field rules:
+
+| Field | Retract-entry rule |
+|-------|--------------------|
+| `<category>` | At least one category MUST use a `*_RETRACT` term in the NCTS ASF scheme. |
+| `ncts:contentItemIdentifier` | Required. Identifies *what* is retracted. |
+| `ncts:contentItemVersion` | Required. Identifies *which version* — exactly. There is no blanket-retract semantics: to retract several versions, issue several entries. |
+| `ncts:fhirVersion` | Required for any `FHIR_*_RETRACT`. |
+| `<link rel="alternate">` | **MUST NOT be present.** A retract has nothing to download. |
+| `<link rel="related">` | Permitted (e.g. a deprecation notice PDF). |
+| `<link>` overall | MAY be absent entirely. |
+| `sct:packageDependency` | SHOULD be absent. |
+| `ncts:bundleInterpretation` | SHOULD be absent. |
+| `ncts:fhirProfile` | SHOULD be absent. |
+| `<published>` | SHOULD be the time the retraction was issued. |
+| `<updated>` | As normal. |
+
+A consumer that has never installed the named `contentItemVersion`
+MUST silently no-op — there is no requirement that the retract
+entry's keys match any previously-published non-retract entry.
+
+A worked retract example is in [Examples](examples.html#a-retract-entry).
+
 ### Worked example
 
 ```xml

@@ -34,9 +34,17 @@ The full set of terms is defined as a CodeSystem in this guide:
 | `SCT_RF2_DELTA` | SNOMED CT RF2 Delta | RF2 release package containing the Delta release type only. |
 | `FHIR_CodeSystem` | FHIR CodeSystem | A single FHIR CodeSystem resource. |
 | `FHIR_ValueSet` | FHIR ValueSet | A single FHIR ValueSet resource. |
+| `FHIR_ConceptMap` | FHIR ConceptMap | A single FHIR ConceptMap resource. |
+| `FHIR_StructureDefinition` | FHIR StructureDefinition | A single FHIR StructureDefinition resource. |
 | `FHIR_Bundle` | FHIR Bundle | A FHIR Bundle resource. The entry's `bundleInterpretation` element specifies `batch` or `collection`. |
 | `FHIR_Package` | FHIR Package | A FHIR NPM (`tgz`) package. |
 | `LOINC` | LOINC | A LOINC release artefact. |
+| `BINARY_RETRACT` | Binary Index Retract | Retracts a previously-published Ontoserver RF2 binary index. See [Retraction](#retraction). |
+| `LOINC_RETRACT` | LOINC Retract | Retracts a previously-published LOINC artefact. |
+| `FHIR_CodeSystem_RETRACT` | FHIR CodeSystem Retract | Retracts a previously-published FHIR CodeSystem. |
+| `FHIR_ValueSet_RETRACT` | FHIR ValueSet Retract | Retracts a previously-published FHIR ValueSet. |
+| `FHIR_ConceptMap_RETRACT` | FHIR ConceptMap Retract | Retracts a previously-published FHIR ConceptMap. |
+| `FHIR_StructureDefinition_RETRACT` | FHIR StructureDefinition Retract | Retracts a previously-published FHIR StructureDefinition. |
 
 ### Ontoserver RF2 binary index scheme
 
@@ -79,8 +87,47 @@ example, jurisdiction tags, edition tags, or publisher-internal
 classifications. Consumers SHOULD ignore categories whose `scheme`
 they do not recognise.
 
+### Retraction
+
+Six terms in the NCTS ASF scheme — collectively the `*_RETRACT`
+terms — mark an entry as a **retraction** of a previously-published
+artefact:
+
+- `BINARY_RETRACT`
+- `LOINC_RETRACT`
+- `FHIR_CodeSystem_RETRACT`
+- `FHIR_ConceptMap_RETRACT`
+- `FHIR_ValueSet_RETRACT`
+- `FHIR_StructureDefinition_RETRACT`
+
+Semantics:
+
+- A retract entry targets the **exact** `contentItemVersion` named
+  in the entry. Retraction is not blanket: a publisher wishing to
+  withdraw multiple versions of the same `contentItemIdentifier`
+  MUST issue one retract entry per version.
+- A retract entry is a unilateral assertion. It does **not** require
+  a matching previously-published non-retract entry in the same
+  feed. A consumer that never installed the named
+  `contentItemVersion` MUST silently no-op.
+- A retract entry MUST NOT carry any `<link rel="alternate">` —
+  there is nothing to download. It MAY carry `<link rel="related">`
+  links (e.g. a deprecation notice).
+- For `FHIR_*_RETRACT`, the `ncts:fhirVersion` rule still applies:
+  the entry MUST carry `ncts:fhirVersion`.
+- `sct:packageDependency` and `ncts:bundleInterpretation` SHOULD be
+  absent on retract entries.
+
+Note: `BINARY_RETRACT` lives in the **NCTS ASF** scheme, even
+though the corresponding non-retract `BINARY` term lives in the
+[Ontoserver RF2 binary index scheme](#ontoserver-rf2-binary-index-scheme).
+
+See [Retraction entries](entry-format.html#retraction-entries) for
+the field-by-field rules.
+
 ### Constraints
 
 When the NCTS ASF category term is `FHIR_CodeSystem`,
-`FHIR_ValueSet`, `FHIR_Bundle`, or `FHIR_Package`, the entry MUST
-also carry `ncts:fhirVersion`.
+`FHIR_ValueSet`, `FHIR_ConceptMap`, `FHIR_StructureDefinition`,
+`FHIR_Bundle`, `FHIR_Package`, or any `FHIR_*_RETRACT`
+counterpart, the entry MUST also carry `ncts:fhirVersion`.

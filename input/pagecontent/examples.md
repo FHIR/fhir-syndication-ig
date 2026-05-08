@@ -121,6 +121,36 @@ Notes:
 - `ncts:fhirVersion` is required because the category term is
   `FHIR_ValueSet`.
 
+### A retract entry
+
+```xml
+<entry>
+  <title>Australian Body Sites — RETRACTED</title>
+  <category term="FHIR_ValueSet_RETRACT" label="FHIR ValueSet Retract"
+            scheme="http://ns.electronichealth.net.au/ncts/syndication/asf/scheme/1.0.0"/>
+  <link rel="related" type="application/pdf"
+        href="https://example.org/notices/au-body-sites-1.2.0-retraction.pdf"
+        length="14238"
+        ncts:sha256Hash="ee44…"/>
+  <id>urn:uuid:5c1f…</id>
+  <updated>2024-08-02T11:00:00Z</updated>
+  <published>2024-08-02T11:00:00Z</published>
+  <ncts:contentItemIdentifier>http://example.org/fhir/ValueSet/au-body-sites</ncts:contentItemIdentifier>
+  <ncts:contentItemVersion>http://example.org/fhir/ValueSet/au-body-sites|1.2.0</ncts:contentItemVersion>
+  <ncts:fhirVersion>4.0.1</ncts:fhirVersion>
+</entry>
+```
+
+Notes:
+
+- Retracts exactly the `1.2.0` version. To also retract `1.1.0`, a
+  separate retract entry is needed.
+- No `<link rel="alternate">`, by rule. The optional
+  `rel="related"` link points to a deprecation notice.
+- `ncts:fhirVersion` is still required (rule applies to any
+  `FHIR_*` term, retract or not).
+- A consumer that never had `1.2.0` installed silently no-ops.
+
 ### A FHIR Bundle entry
 
 ```xml

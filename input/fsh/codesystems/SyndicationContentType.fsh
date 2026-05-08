@@ -28,8 +28,25 @@ linked artefact.
 // ── FHIR resources ────────────────────────────────────────────────────────
 * #FHIR_CodeSystem "FHIR CodeSystem" "A single FHIR CodeSystem resource."
 * #FHIR_ValueSet "FHIR ValueSet" "A single FHIR ValueSet resource."
+* #FHIR_ConceptMap "FHIR ConceptMap" "A single FHIR ConceptMap resource."
+* #FHIR_StructureDefinition "FHIR StructureDefinition" "A single FHIR StructureDefinition resource."
 * #FHIR_Bundle "FHIR Bundle" "A FHIR Bundle resource. The entry's `bundleInterpretation` element specifies whether the consumer SHOULD process it as `batch` or `collection`."
 * #FHIR_Package "FHIR Package" "A FHIR NPM (`tgz`) implementation guide / package."
 
 // ── Other terminologies ───────────────────────────────────────────────────
 * #LOINC "LOINC" "A LOINC release artefact."
+
+// ── Retractions ───────────────────────────────────────────────────────────
+// A retract entry asserts that the artefact identified by
+// (contentItemIdentifier, contentItemVersion) is withdrawn. Targets the
+// exact contentItemVersion named — there is no blanket-retract semantics.
+// A consumer that never installed that version MUST silently no-op.
+// Retract entries MUST NOT carry a <link rel="alternate"> (there is
+// nothing to download); they MAY carry <link rel="related"> for
+// deprecation notices.
+* #BINARY_RETRACT "Binary Index Retract" "Retraction of a previously-published Ontoserver RF2 binary index identified by the entry's contentItemIdentifier and contentItemVersion."
+* #LOINC_RETRACT "LOINC Retract" "Retraction of a previously-published LOINC artefact."
+* #FHIR_CodeSystem_RETRACT "FHIR CodeSystem Retract" "Retraction of a previously-published FHIR CodeSystem identified by the entry's contentItemIdentifier and contentItemVersion."
+* #FHIR_ValueSet_RETRACT "FHIR ValueSet Retract" "Retraction of a previously-published FHIR ValueSet."
+* #FHIR_ConceptMap_RETRACT "FHIR ConceptMap Retract" "Retraction of a previously-published FHIR ConceptMap."
+* #FHIR_StructureDefinition_RETRACT "FHIR StructureDefinition Retract" "Retraction of a previously-published FHIR StructureDefinition."
