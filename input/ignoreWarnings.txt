@@ -1,0 +1,7 @@
+== Suppressed Messages ==
+
+# Logical models intentionally describe Atom XML, not FHIR resources
+The Implementation Guide contains no examples for this profile
+
+# Canonical URLs in code values reference real-world Atom namespace URIs (not FHIR resources)
+Code System URI '*' is unknown so the code cannot be validated

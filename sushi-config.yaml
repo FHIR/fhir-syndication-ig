@@ -1,0 +1,73 @@
+id: aehrc.syndication
+canonical: https://ontoserver.csiro.au/syndication
+url: https://ontoserver.csiro.au/syndication/ImplementationGuide/aehrc.syndication
+name: TerminologySyndicationFeed
+title: Terminology Syndication Feed Implementation Guide
+status: draft
+version: 0.1.0
+fhirVersion: 4.0.1
+copyrightYear: 2026+
+releaseLabel: ci-build
+publisher:
+  name: Australian e-Health Research Centre
+  url: https://aehrc.csiro.au
+contact:
+  - name: Michael Lawley
+    telecom:
+      - system: email
+        value: michael.lawley@csiro.au
+description: >-
+  Specifies the Atom-based terminology syndication feed format. Defines the
+  feed and entry shapes, the meaning of each field, the cross-field
+  constraints, the controlled vocabularies for category schemes, and the
+  three extension namespaces used: NCTS Atom Syndication Format (ASF) at
+  `http://ns.electronichealth.net.au/ncts/syndication/asf/extensions/1.0.0`,
+  the SNOMED CT extension namespace at
+  `http://snomed.info/syndication/sct-extension/1.0.0`, and the Ontoserver
+  syndication namespace at `http://ontoserver.csiro.au/syndication/`.
+
+dependencies: {}
+
+pages:
+  index.md:
+    title: Home
+  feed-format.md:
+    title: Feed Format
+  entry-format.md:
+    title: Entry Format
+  ncts-extensions.md:
+    title: NCTS ASF Extensions
+  sct-extensions.md:
+    title: SNOMED CT Extensions
+  onto-extensions.md:
+    title: Ontoserver Extensions
+  categories.md:
+    title: Category Schemes
+  security.md:
+    title: Security
+  examples.md:
+    title: Examples
+
+menu:
+  Home: index.html
+  Feed Format:
+    Feed: feed-format.html
+    Entry: entry-format.html
+    Categories: categories.html
+  Extensions:
+    NCTS ASF: ncts-extensions.html
+    SNOMED CT: sct-extensions.html
+    Ontoserver: onto-extensions.html
+  Security: security.html
+  Examples: examples.html
+  Artifacts: artifacts.html
+
+parameters:
+  show-inherited-invariants: 'false'
+  apply-jurisdiction: 'false'
+
+jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
+license: CC-BY-4.0
+
+FSHOnly: false
+applyExtensionMetadataToRoot: false

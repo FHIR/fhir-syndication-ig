@@ -1,0 +1,9 @@
+fsh-generated/
+output/
+template/
+input-cache/
+temp/
+*.log
+.DS_Store
+.vscode/
+.idea/
