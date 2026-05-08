@@ -16,15 +16,42 @@ particular publisher's or consumer's behaviour.
 
 ## Build
 
-Requires SUSHI v3+ and (for the full IG) the HL7 FHIR IG Publisher.
+Requires SUSHI v3+ and (for the full IG) Java 17+ and the HL7 FHIR IG
+Publisher.
 
 ```sh
-# FSH → resources only (fast, no IG Publisher)
+# FSH only — fast, no IG Publisher
 sushi .
 
-# Full IG build (downloads IG Publisher on first run)
-./_genonce.sh   # provided by the IG template, see https://github.com/HL7/ig-publisher-scripts
+# Full IG build
+./_updatePublisher.sh   # one-off: fetch publisher.jar into input-cache/
+./_genonce.sh           # SUSHI + IG Publisher → output/
 ```
+
+Windows: `_updatePublisher.bat` and `_genonce.bat`.
+
+## Continuous build
+
+`.github/workflows/build.yml` runs the full IG Publisher build on
+every push to `main` and on every PR. The `main`-branch build is
+deployed to GitHub Pages (`output/` → site root). Per-run artefacts
+are kept for 14 days.
+
+To enable Pages deployment: in repo settings → Pages, set source to
+"GitHub Actions". The first push to `main` will populate the site.
+
+## HL7 auto-builder
+
+To have the HL7 auto-builder at <https://build.fhir.org/ig/> rebuild
+this IG on every push:
+
+1. Push the repo to a public GitHub repository.
+2. Open a PR against
+   <https://github.com/FHIR/ig-registry> adding this repo to
+   `fhir-ig-list.json`.
+
+The HL7 auto-builder reads `ig.ini` and the standard `_genonce.sh` /
+`_updatePublisher.sh` scripts that this repo already provides.
 
 ## Layout
 
