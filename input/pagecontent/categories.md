@@ -37,7 +37,40 @@ The full set of terms is defined as a CodeSystem in this guide:
 | `FHIR_Bundle` | FHIR Bundle | A FHIR Bundle resource. The entry's `bundleInterpretation` element specifies `batch` or `collection`. |
 | `FHIR_Package` | FHIR Package | A FHIR NPM (`tgz`) package. |
 | `LOINC` | LOINC | A LOINC release artefact. |
-| `BINARY` | Binary | An opaque binary artefact. Consumers MUST use the link's `type` attribute to determine media type. |
+
+### Ontoserver RF2 binary index scheme
+
+A second scheme is used for entries publishing a **pre-built
+Ontoserver RF2 binary index** — a zip containing the on-disk index
+Ontoserver derives from a SNOMED CT RF2 release, ready to be loaded
+directly without re-indexing. This is *not* a SNOMED CT release in
+RF2 form; it is an Ontoserver-specific index file.
+
+The scheme URI is versioned by **binary index format**, not by the
+SNOMED CT release version it indexes:
+
+- `http://ontoserver.csiro.au/syndication/rf2/1.0.0`
+- `http://ontoserver.csiro.au/syndication/rf2/2.0.0`
+
+A consumer MUST match the scheme URI exactly. Indexes from the
+`1.0.0` and `2.0.0` schemes are not interchangeable. Consumers that
+do not recognise either scheme MUST ignore the entry.
+
+The single term used in this scheme is `BINARY`, conventionally
+labelled `Binary Index`. See
+[OntoserverRf2Index](CodeSystem-ontoserver-rf2-index.html).
+
+```xml
+<category term="BINARY" label="Binary Index"
+          scheme="http://ontoserver.csiro.au/syndication/rf2/2.0.0"/>
+```
+
+The accompanying entry's `ncts:contentItemIdentifier` and
+`ncts:contentItemVersion` SHOULD identify the underlying SNOMED CT
+module and version that the index represents (i.e. the *content*),
+exactly as for an RF2 release entry. The binary-index-format
+version is carried by the scheme URI, separately from the content
+version.
 
 ### Multiple categories
 

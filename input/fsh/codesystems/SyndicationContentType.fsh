@@ -33,6 +33,3 @@ linked artefact.
 
 // ── Other terminologies ───────────────────────────────────────────────────
 * #LOINC "LOINC" "A LOINC release artefact."
-
-// ── Generic ───────────────────────────────────────────────────────────────
-* #BINARY "Binary" "An opaque binary artefact. Consumers MUST use the link's `type` attribute to determine media type."

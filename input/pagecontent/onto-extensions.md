@@ -8,6 +8,20 @@ permission tags, and a per-link validation flag. These are
 optional; feeds that do not need either are not required to
 declare the namespace.
 
+### Related: Ontoserver category schemes
+
+Beyond the elements in this namespace, the Ontoserver-related
+syndication artefact types use a category scheme also rooted in
+this namespace's host:
+
+- `http://ontoserver.csiro.au/syndication/rf2/<format-version>` —
+  identifies a pre-built Ontoserver RF2 binary index. See
+  [Category Schemes](categories.html#ontoserver-rf2-binary-index-scheme).
+
+These are categorisation URIs, not extension namespaces — they
+appear in `<category scheme="…">` rather than as XML element
+namespaces.
+
 ### Entry-level elements
 
 #### `onto:permission`
