@@ -65,6 +65,8 @@ menu:
 parameters:
   show-inherited-invariants: 'false'
   apply-jurisdiction: 'false'
+  special-url:
+    - http://ns.electronichealth.net.au/ncts/syndication/asf/scheme/1.0.0
 
 jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
 license: CC-BY-4.0
