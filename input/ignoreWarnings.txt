@@ -1,7 +1,43 @@
 == Suppressed Messages ==
 
-# Logical models intentionally describe Atom XML, not FHIR resources
-The Implementation Guide contains no examples for this profile
+# Markdown-HTML false positives. Our descriptions document an XML wire format
+# (Atom + ncts:/sct:/onto: extensions), so they contain literal <element>
+# notation inside backticks. The publisher's markdown linter flags these as
+# embedded HTML. They aren't.
+The markdown contains content that appears to be an embedded HTML tag starting at '&lt;c'. This will (or SHOULD) be escaped by the presentation layer. The content should be checked to confirm that this is the desired behaviour
+The markdown contains content that appears to be an embedded HTML tag starting at '&lt;e'. This will (or SHOULD) be escaped by the presentation layer. The content should be checked to confirm that this is the desired behaviour
+The markdown contains content that appears to be an embedded HTML tag starting at '&lt;l'. This will (or SHOULD) be escaped by the presentation layer. The content should be checked to confirm that this is the desired behaviour
+The markdown contains content that appears to be an embedded HTML tag starting at '&lt;a'. This will (or SHOULD) be escaped by the presentation layer. The content should be checked to confirm that this is the desired behaviour
+The markdown contains content that appears to be an embedded HTML tag starting at '&lt;s'. This will (or SHOULD) be escaped by the presentation layer. The content should be checked to confirm that this is the desired behaviour
+The markdown contains content that appears to be an embedded HTML tag starting at '&lt;f'. This will (or SHOULD) be escaped by the presentation layer. The content should be checked to confirm that this is the desired behaviour
+The markdown contains content that appears to be an embedded HTML tag starting at '&lt;t'. This will (or SHOULD) be escaped by the presentation layer. The content should be checked to confirm that this is the desired behaviour
+The markdown contains content that appears to be an embedded HTML tag starting at '&lt;r'. This will (or SHOULD) be escaped by the presentation layer. The content should be checked to confirm that this is the desired behaviour
+The markdown contains content that appears to be an embedded HTML tag starting at '&lt;u'. This will (or SHOULD) be escaped by the presentation layer. The content should be checked to confirm that this is the desired behaviour
+The markdown contains content that appears to be an embedded HTML tag starting at '&lt;p'. This will (or SHOULD) be escaped by the presentation layer. The content should be checked to confirm that this is the desired behaviour
+The markdown contains content that appears to be an embedded HTML tag starting at '&lt;b'. This will (or SHOULD) be escaped by the presentation layer. The content should be checked to confirm that this is the desired behaviour
+The markdown contains content that appears to be an embedded HTML tag starting at '&lt;i'. This will (or SHOULD) be escaped by the presentation layer. The content should be checked to confirm that this is the desired behaviour
+The markdown contains content that appears to be an embedded HTML tag starting at '&lt;o'. This will (or SHOULD) be escaped by the presentation layer. The content should be checked to confirm that this is the desired behaviour
+The markdown contains content that appears to be an embedded HTML tag starting at '&lt;n'. This will (or SHOULD) be escaped by the presentation layer. The content should be checked to confirm that this is the desired behaviour
+The markdown contains content that appears to be an embedded HTML tag starting at '&lt;m'. This will (or SHOULD) be escaped by the presentation layer. The content should be checked to confirm that this is the desired behaviour
+The markdown contains content that appears to be an embedded HTML tag starting at '&lt;g'. This will (or SHOULD) be escaped by the presentation layer. The content should be checked to confirm that this is the desired behaviour
+The markdown contains content that appears to be an embedded HTML tag starting at '&lt;d'. This will (or SHOULD) be escaped by the presentation layer. The content should be checked to confirm that this is the desired behaviour
+The markdown contains content that appears to be an embedded HTML tag starting at '&lt;v'. This will (or SHOULD) be escaped by the presentation layer. The content should be checked to confirm that this is the desired behaviour
+The markdown contains content that appears to be an embedded HTML tag starting at '&lt;w'. This will (or SHOULD) be escaped by the presentation layer. The content should be checked to confirm that this is the desired behaviour
+The markdown contains content that appears to be an embedded HTML tag starting at '&lt;h'. This will (or SHOULD) be escaped by the presentation layer. The content should be checked to confirm that this is the desired behaviour
+The markdown contains content that appears to be an embedded HTML tag starting at '&lt;k'. This will (or SHOULD) be escaped by the presentation layer. The content should be checked to confirm that this is the desired behaviour
+The markdown contains content that appears to be an embedded HTML tag starting at '&lt;y'. This will (or SHOULD) be escaped by the presentation layer. The content should be checked to confirm that this is the desired behaviour
 
-# Canonical URLs in code values reference real-world Atom namespace URIs (not FHIR resources)
-Code System URI '*' is unknown so the code cannot be validated
+# Match by message ID — covers all SECURITY_STRING_CONTENT_WARNING variants
+%SECURITY_STRING_CONTENT_WARNING%
+
+# Logical-model root path uses hyphenated FHIR resource Ids (e.g. `syndication-feed`).
+# eld-20's regex requires [A-Za-z][A-Za-z0-9]* which rejects hyphens. Hyphenated
+# Ids are idiomatic for FHIR resources and harmless on logical models — the
+# constraint really targets canonical ElementDefinition.path on actual profiles.
+%eld-20%
+
+# Optional template fragments we don't customise.
+The HTML fragment 'ip-statements.xhtml' is not included anywhere in the produced implementation guide
+The HTML fragment 'globals-table.xhtml' is not included anywhere in the produced implementation guide
+An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide
+An HTML fragment from the set [dependency-table.xhtml, dependency-table-short.xhtml, dependency-table-nontech.xhtml] is not included anywhere in the produced implementation guide

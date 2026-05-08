@@ -8,5 +8,6 @@ view of the Bundle's contents. The consumer is not obliged to
 follow the hint.
 """
 * ^url = "https://ontoserver.csiro.au/syndication/ValueSet/bundle-interpretation"
+* ^experimental = false
 * http://hl7.org/fhir/bundle-type#batch "Batch"
 * http://hl7.org/fhir/bundle-type#collection "Collection"
