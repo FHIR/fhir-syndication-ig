@@ -12,7 +12,7 @@ Logical: SyndicationEntry
 Id: syndication-entry
 Title: "Terminology Syndication Entry"
 Description: """
-An Atom `entry` (RFC 4287 §4.1.2) representing a single syndicated
+An Atom `⟨entry⟩` (RFC 4287 §4.1.2) representing a single syndicated
 artefact set — for example an RF2 release package, a FHIR
 CodeSystem, a FHIR ValueSet, or a FHIR NPM package.
 
@@ -26,7 +26,7 @@ state).
 When an entry's artefact is a FHIR canonical resource (CodeSystem,
 ValueSet, ConceptMap, NamingSystem, StructureDefinition, …):
 
-- `contentItemIdentifier` SHOULD equal the resource's `url`.
+- `contentItemIdentifier` SHOULD equal the resource's `⟨url⟩`.
 - `contentItemVersion` SHOULD equal `{url}|{version}` (the canonical URL,
   a pipe, and the version).
 - `published` SHOULD equal the resource's `date`.
@@ -44,40 +44,40 @@ Characteristics: #can-be-target
 
 // ── Atom core ─────────────────────────────────────────────────────────────
 * id 1..1 uri "permanent globally-unique entry identifier"
-* id ^definition = "Atom `id` element. Permanent, globally-unique identifier for this entry. Conventionally `urn:uuid:{uuid}`. MUST NOT change when the entry is updated (RFC 4287 §4.2.6)."
+* id ^definition = "Atom `⟨id⟩` element. Permanent, globally-unique identifier for this entry. Conventionally `urn:uuid:{uuid}`. MUST NOT change when the entry is updated (RFC 4287 §4.2.6)."
 
 * title 1..1 string "human-readable entry name"
-* title ^definition = "Atom `title` element. Human-readable entry name."
+* title ^definition = "Atom `⟨title⟩` element. Human-readable entry name."
 
 * summary 0..1 string "short description of the artefact"
-* summary ^definition = "Atom `summary` element. Short description of the artefact's content and intended use."
+* summary ^definition = "Atom `⟨summary⟩` element. Short description of the artefact's content and intended use."
 
 * rights 0..1 string "copyright/licence statement"
-* rights ^definition = "Atom `rights` element. Copyright/licence statement applicable to the artefact."
+* rights ^definition = "Atom `⟨rights⟩` element. Copyright/licence statement applicable to the artefact."
 
 * published 0..1 dateTime "instant the artefact set was first issued"
-* published ^definition = "Atom `published` element. The instant the artefact set was first issued by its publisher. For FHIR canonical resources, SHOULD equal the resource's `date`."
+* published ^definition = "Atom `⟨published⟩` element. The instant the artefact set was first issued by its publisher. For FHIR canonical resources, SHOULD equal the resource's `date`."
 
 * updated 1..1 dateTime "instant this entry last meaningfully changed"
-* updated ^definition = "Atom `updated` element. The instant this entry's metadata or artefacts last meaningfully changed. For FHIR canonical resources whose content has changed, SHOULD equal the resource's `meta.lastUpdated` or `date`."
+* updated ^definition = "Atom `⟨updated⟩` element. The instant this entry's metadata or artefacts last meaningfully changed. For FHIR canonical resources whose content has changed, SHOULD equal the resource's `meta.lastUpdated` or `date`."
 
 * author 0..* BackboneElement "party that produced the artefact"
-* author ^definition = "Atom `author` element. The party that produced the artefact."
+* author ^definition = "Atom `⟨author⟩` element. The party that produced the artefact."
   * name 1..1 string "author display name"
   * uri 0..1 uri "author URI (typically organisation homepage)"
   * email 0..1 string "author contact email"
 
 * category 1..* SyndicationCategory "category classifying this entry"
-* category ^definition = "Atom `category` element. At least one category MUST be present, and at least one category SHOULD use a registered scheme so consumers can determine the artefact type (see SyndicationContentType)."
+* category ^definition = "Atom `⟨category⟩` element. At least one category MUST be present, and at least one category SHOULD use a registered scheme so consumers can determine the artefact type (see SyndicationContentType)."
 
 * link 0..* SyndicationLink "link to artefact or related document"
-* link ^definition = "Atom `link` element. For non-retract entries at least one link MUST be present — the primary artefact uses `rel=\"alternate\"`; ancillary documents (release notes, licence) use `rel=\"related\"`. Retract entries MUST NOT carry any `rel=\"alternate\"` link (there is nothing to download); they MAY carry `rel=\"related\"` links — see `entry-retract-no-alternate-link` and `entry-non-retract-has-link`."
+* link ^definition = "Atom `⟨link⟩` element. For non-retract entries at least one link MUST be present — the primary artefact uses `rel=\"alternate\"`; ancillary documents (release notes, licence) use `rel=\"related\"`. Retract entries MUST NOT carry any `rel=\"alternate\"` link (there is nothing to download); they MAY carry `rel=\"related\"` links — see `entry-retract-no-alternate-link` and `entry-non-retract-has-link`."
 
 * obeys entry-retract-no-alternate-link
 * obeys entry-non-retract-has-link
 
 * source 0..1 SyndicationFeedMetadata "originating feed metadata"
-* source ^definition = "Atom `source` element (RFC 4287 §4.2.11). Identifies the originating feed when this entry has been copied, mirrored, or aggregated from another feed. SHOULD be set whenever the entry has been included in a feed other than its publisher's primary feed."
+* source ^definition = "Atom `⟨source⟩` element (RFC 4287 §4.2.11). Identifies the originating feed when this entry has been copied, mirrored, or aggregated from another feed. SHOULD be set whenever the entry has been included in a feed other than its publisher's primary feed."
 
 // ── NCTS ASF extensions ──────────────────────────────────────────────────
 * contentItemIdentifier 1..1 uri "version-independent canonical identifier"

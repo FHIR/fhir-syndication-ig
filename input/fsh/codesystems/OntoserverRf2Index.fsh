@@ -13,7 +13,7 @@ is not a SNOMED CT RF2 release).
 
 ## Wire-level scheme URI
 
-On the wire, the Atom `category` element's `scheme` attribute carries one
+On the wire, the Atom `⟨category⟩` element's `scheme` attribute carries one
 of these URIs — not the canonical of this CodeSystem:
 
 - `http://ontoserver.csiro.au/syndication/rf2/1.0.0`
@@ -25,7 +25,7 @@ A consumer MUST match the scheme URI exactly: an index published as
 `…/rf2/1.0.0` is not interchangeable with one published as
 `…/rf2/2.0.0`.
 
-The label paired with this term on the `category` element is conventionally
+The label paired with this term on the `⟨category⟩` element is conventionally
 `Binary Index`.
 """
 * ^url = "http://ontoserver.csiro.au/syndication/rf2"

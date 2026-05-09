@@ -2,7 +2,7 @@ Logical: SyndicationLink
 Id: syndication-link
 Title: "Terminology Syndication Link"
 Description: """
-An Atom `link` element (RFC 4287 §4.2.7) inside a syndication entry. The
+An Atom `⟨link⟩` element (RFC 4287 §4.2.7) inside a syndication entry. The
 core Atom attributes carry the artefact URL and media type; the
 extension namespaces add file-level integrity and validation
 metadata.

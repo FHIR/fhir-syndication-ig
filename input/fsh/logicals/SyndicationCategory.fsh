@@ -2,7 +2,7 @@ Logical: SyndicationCategory
 Id: syndication-category
 Title: "Terminology Syndication Category"
 Description: """
-An Atom `category` element classifying a syndication entry. The
+An Atom `⟨category⟩` element classifying a syndication entry. The
 `scheme` URI identifies the controlled vocabulary; `term` is the
 machine code; `label` is the human-readable form.
 
