@@ -2,8 +2,8 @@ CodeSystem: SyndicationContentType
 Id: syndication-content-type
 Title: "Terminology Syndication Content Type"
 Description: """
-The set of terms used in `<category term=\"…\">` to identify what
-kind of terminology artefact a syndication entry carries.
+The set of terms used on a `category` element's `term` attribute to
+identify what kind of terminology artefact a syndication entry carries.
 
 This code system represents the NCTS Atom Syndication Format
 category scheme, identified by the URI
