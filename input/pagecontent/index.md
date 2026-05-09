@@ -1,3 +1,12 @@
+
+<style>
+div.mermaid iframe {
+  width: 100% !important;
+  height: 450px !important;
+  border: 0 !important;
+}
+</style>
+
 ### Terminology Syndication Feed
 
 This Implementation Guide specifies the **wire format** that
@@ -11,8 +20,9 @@ later in the guide.
 
 ### Why syndicate at all?
 
-Clinical terminologies change. SNOMED CT International ships
-twice a year; SNOMED CT national editions and the AMT/dm+d
+Clinical terminologies change. SNOMED CT International now
+produces a new release every month;
+many SNOMED CT national Editions and the AMT/dm+d
 medicines extensions are usually monthly; FHIR `CodeSystem`,
 `ValueSet`, `ConceptMap`, and packaged `Bundle` artefacts ship on
 their authors' own cadence. Every system that uses this content —
@@ -27,18 +37,15 @@ does not scale:
 - Different operators end up on different versions ("version
   drift"), and clinical data coded against one version doesn't
   always validate against another.
-- Loading a SNOMED CT release into a terminology server is
-  computationally expensive — building the indexes "requires
-  much more memory than operating as a read/write or read-only
-  server, and the indexing process ties up CPU for some time"
-  ([Ontoserver docs][onto-syn]). Repeating that work inside
-  every organisation is waste.
+- Loading a SNOMED CT release into a terminology server can be
+  computationally or resource intensive — building these indexes
+  once and sharing the result reduces burden.
 - Each new publisher — national extensions, derivative reference
   sets, packaged FHIR bundles, jurisdictional maps — multiplies
   the manual effort.
 
-Syndication is the standard answer. SNOMED International puts
-it plainly:
+Syndication of terminology content is a way to manage these issues.
+SNOMED International states:
 
 > "manually downloading RF2 zip files on secure portals can be
 > significantly improved by implementing an NTS, streamlining
@@ -47,7 +54,8 @@ it plainly:
 
 ### What is a syndication feed?
 
-A feed is a machine-readable catalogue. NCTS defines syndication
+A feed is a machine-readable catalogue. Australia's National
+Clinical Terminology Service (NCTS) defines syndication
 as "the transfer of terminology data between terminology
 servers" ([NCTS Guide for Implementers, §3.5][ncts-impl]) — a
 publisher exposes a list of available content, and a consumer
@@ -114,7 +122,6 @@ flowchart TB
 ```
 
 
-
 1. An **authoritative publisher** — SNOMED International
    ([MLDS](https://mlds.ihtsdotools.org)), the Australian Digital
    Health Agency ([NCTS](https://www.healthterminologies.gov.au)),
@@ -129,7 +136,7 @@ flowchart TB
    second-tier feed, so their run-time queries hit a local
    terminology server rather than the national one.
 
-NCTS describes this as decentralisation of the distribution
+The NCTS describes this as decentralisation of the distribution
 responsibility: NCTS "can serve the role of seeding top-level
 terminology servers, which can then expose their own
 syndication feeds to terminology consumers within their own
