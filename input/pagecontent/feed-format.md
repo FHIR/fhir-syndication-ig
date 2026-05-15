@@ -40,6 +40,34 @@ document. Publishers handling very large catalogues typically split
 content across multiple feeds and use `<link rel="related">` to
 reference them; this is out of scope for this specification.
 
+### Feed filtering
+
+Servers **SHOULD** support the query-string parameters below, applied
+to the `<entry>` set before serialisation. Consumers **MAY** also
+apply the same predicates client-side after retrieval — defensively
+(a server that does not implement filtering will typically ignore
+unknown parameters and return the full feed, indistinguishable from a
+server that honoured them) or because the feed is served as a static
+file. The semantics below are normative; whether the server, the
+client, or both apply them is not.
+
+| Parameter | Repeatable | Match rule |
+|-----------|------------|------------|
+| `canonical` | yes | Value is a FHIR [Canonical](https://www.hl7.org/fhir/datatypes.html#canonical) — `url` or `url\|version`. Matches an entry whose `ncts:contentItemIdentifier` equals the `url` part. If a `\|version` is supplied, `ncts:contentItemVersion` **MUST** also equal the version part. |
+| `category` | yes | Matches an entry that has a `<category>` whose `term` attribute equals the value. Match is against `term` only — not `label`, not `scheme`. |
+| `fhirVersion` | yes | Matches an entry whose `ncts:fhirVersion` equals the value, compared as `major.minor` (e.g. `4.0`). Publishers **SHOULD** emit `ncts:fhirVersion` in `major.minor` form; consumers **MUST** truncate to `major.minor` before comparing. |
+
+When a parameter appears more than once, an entry matches if it
+matches **any** of its values (OR). When different parameters are
+present, an entry matches only if it matches **each** parameter
+(AND). An entry that lacks the field a parameter is keyed on does
+not match that parameter.
+
+[Ontoserver](https://ontoserver.csiro.au/docs/) implements these
+filters both as a server (applying them to its own published feed)
+and as a client (re-applying them after retrieval, so the filter is
+honoured even when the upstream feed does not support it).
+
 ### Content negotiation
 
 The MIME type for an Atom feed document is `application/atom+xml`.
