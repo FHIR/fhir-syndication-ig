@@ -8,7 +8,7 @@ package dependencies and the legacy MD5 file hash.
 
 ### Entry-level elements
 
-#### `sct:packageDependency`
+#### `<sct:packageDependency>`
 
 Inter-package dependencies for this SNOMED CT artefact. Present
 only when the artefact is a SNOMED CT extension or derivative —
@@ -20,21 +20,21 @@ never on the International Edition itself.
 
 Contains zero or more of each of:
 
-##### `sct:editionDependency`
+##### `<sct:editionDependency>`
 
 Versioned SNOMED CT URI of an edition this package depends on.
 
 | Cardinality | Type | Format |
 |-------------|------|--------|
-| 0..* | `xs:anyURI` | `http://snomed.info/sct/<moduleId>/version/<YYYYMMDD>` |
+| 0..* | `xs:anyURI` | `http://snomed.info/(x)?sct/<moduleId>/version/<YYYYMMDD>` |
 
-##### `sct:derivativeDependency`
+##### `<sct:derivativeDependency>`
 
 Versioned SNOMED CT URI of a derivative this package depends on.
 
 | Cardinality | Type | Format |
 |-------------|------|--------|
-| 0..* | `xs:anyURI` | `http://snomed.info/sct/<moduleId>/version/<YYYYMMDD>` |
+| 0..* | `xs:anyURI` | `http://snomed.info/(x)?sct/<moduleId>/version/<YYYYMMDD>` |
 
 A consumer MUST install all transitively-referenced edition and
 derivative dependencies before installing the artefact.

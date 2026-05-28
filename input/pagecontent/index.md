@@ -14,6 +14,18 @@ terminology publishers use to advertise what they have for
 download — and that downstream terminology servers, vendors, and
 clinical systems use to keep their copies current.
 
+Clinical terminologies such as SNOMED CT, LOINC, and various FHIR resources are updated regularly,
+and systems that depend on them — terminology servers, EHRs, decision support tools, and validators — need a reliable way to track and retrieve new releases.
+The IG specifies a machine-readable catalogue based on the Atom format,
+in which each entry describes one item of content with a stable identifier,
+a version, a category, a download link, and a cryptographic hash for verifying integrity.
+Consumers poll the catalogue on their own schedule and pull only what they do not already have,
+which means re-reading the catalogue causes no duplicate work.
+The IG also defines how entries align with FHIR and SNOMED CT metadata,
+how publishers signal that a previously released item has been withdrawn,
+and how per-entry permission tags can restrict access.
+It specifies the format only, leaving transport, authentication, pagination, and the behaviour of any particular software outside its scope.
+
 If syndication is new to you, start here. The technical surface —
 namespaces, profile declarations, field-by-field rules — comes
 later in the guide.
@@ -179,7 +191,7 @@ extended with three namespaces:
 
 Together these are referred to as the **NCTS Atom Syndication Format
 (ASF) profile**, currently at version `1.0.0`. Feeds that conform to
-this profile declare it via the `ncts:atomSyndicationFormatProfile`
+this profile declare it via the `<ncts:atomSyndicationFormatProfile>`
 element on the feed:
 
 ```xml

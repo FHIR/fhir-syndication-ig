@@ -9,7 +9,7 @@ syndication feed from a generic Atom feed.
 
 ### Feed-level elements
 
-#### `ncts:atomSyndicationFormatProfile`
+#### `<ncts:atomSyndicationFormatProfile>`
 
 URI declaring the ASF profile version the feed conforms to.
 
@@ -24,7 +24,7 @@ the feed.
 
 ### Entry-level elements
 
-#### `ncts:contentItemIdentifier`
+#### `<ncts:contentItemIdentifier>`
 
 Canonical, version-independent identifier of the artefact.
 
@@ -36,7 +36,7 @@ Stable across versions of the same logical artefact. For FHIR
 canonical resources, equals the resource's `url`. For SNOMED CT
 modules, the unversioned module URI.
 
-#### `ncts:contentItemVersion`
+#### `<ncts:contentItemVersion>`
 
 Canonical, version-specific identifier of this exact release.
 
@@ -49,7 +49,7 @@ resources, equals `<url>|<version>`. For SNOMED CT modules, the
 versioned module URI
 (`http://snomed.info/sct/<moduleId>/version/<YYYYMMDD>`).
 
-#### `ncts:fhirVersion`
+#### `<ncts:fhirVersion>`
 
 FHIR version the artefact targets.
 
@@ -60,7 +60,7 @@ FHIR version the artefact targets.
 MUST be present when at least one of the entry's `<category>`
 elements has a `FHIR_*` term in the NCTS ASF scheme.
 
-#### `ncts:fhirProfile`
+#### `<ncts:fhirProfile>`
 
 FHIR StructureDefinition canonical(s) the artefact claims
 conformance to.
@@ -71,7 +71,7 @@ conformance to.
 
 Repeats once per profile. Only meaningful for FHIR artefacts.
 
-#### `ncts:bundleInterpretation`
+#### `<ncts:bundleInterpretation>`
 
 For artefacts that are FHIR Bundles: a publisher hint describing
 how the publisher views the Bundle's contents.

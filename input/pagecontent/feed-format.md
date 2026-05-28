@@ -53,9 +53,9 @@ client, or both apply them is not.
 
 | Parameter | Repeatable | Match rule |
 |-----------|------------|------------|
-| `canonical` | yes | Value is a FHIR [Canonical](https://www.hl7.org/fhir/datatypes.html#canonical) — `url` or `url\|version`. Matches an entry whose `ncts:contentItemIdentifier` equals the `url` part. If a `\|version` is supplied, `ncts:contentItemVersion` **MUST** also equal the version part. |
+| `canonical` | yes | Value is a FHIR [Canonical](https://www.hl7.org/fhir/datatypes.html#canonical) — `url` or `url\|version`. Matches an entry whose `<ncts:contentItemIdentifier>` equals the `url` part. If a `\|version` is supplied, `<ncts:contentItemVersion>` **MUST** also equal the version part. |
 | `category` | yes | Matches an entry that has a `<category>` whose `term` attribute equals the value. Match is against `term` only — not `label`, not `scheme`. |
-| `fhirVersion` | yes | Matches an entry whose `ncts:fhirVersion` equals the value, compared as `major.minor` (e.g. `4.0`). Publishers **SHOULD** emit `ncts:fhirVersion` in `major.minor` form; consumers **MUST** truncate to `major.minor` before comparing. |
+| `fhirVersion` | yes | Matches an entry whose `<ncts:fhirVersion>` agrees with the value on its `major.minor` portion (e.g. `4.0`). Either side MAY be supplied as `major.minor.patch`; the patch component **MUST** be ignored for comparison. |
 
 When a parameter appears more than once, an entry matches if it
 matches **any** of its values (OR). When different parameters are

@@ -73,8 +73,8 @@ labelled `Binary Index`. See
           scheme="http://ontoserver.csiro.au/syndication/rf2/2.0.0"/>
 ```
 
-The accompanying entry's `ncts:contentItemIdentifier` and
-`ncts:contentItemVersion` SHOULD identify the underlying SNOMED CT
+The accompanying entry's `<ncts:contentItemIdentifier>` and
+`<ncts:contentItemVersion>` SHOULD identify the underlying SNOMED CT
 module and version that the index represents (i.e. the *content*),
 exactly as for an RF2 release entry. The binary-index-format
 version is carried by the scheme URI, separately from the content
@@ -113,9 +113,9 @@ Semantics:
 - A retract entry MUST NOT carry any `<link rel="alternate">` —
   there is nothing to download. It MAY carry `<link rel="related">`
   links (e.g. a deprecation notice).
-- For `FHIR_*_RETRACT`, the `ncts:fhirVersion` rule still applies:
-  the entry MUST carry `ncts:fhirVersion`.
-- `sct:packageDependency` and `ncts:bundleInterpretation` SHOULD be
+- For `FHIR_*_RETRACT`, the `<ncts:fhirVersion>` rule still applies:
+  the entry MUST carry `<ncts:fhirVersion>`.
+- `<sct:packageDependency>` and `<ncts:bundleInterpretation>` SHOULD be
   absent on retract entries.
 
 Note: `BINARY_RETRACT` lives in the **NCTS ASF** scheme, even
@@ -130,4 +130,4 @@ the field-by-field rules.
 When the NCTS ASF category term is `FHIR_CodeSystem`,
 `FHIR_ValueSet`, `FHIR_ConceptMap`, `FHIR_StructureDefinition`,
 `FHIR_Bundle`, `FHIR_Package`, or any `FHIR_*_RETRACT`
-counterpart, the entry MUST also carry `ncts:fhirVersion`.
+counterpart, the entry MUST also carry `<ncts:fhirVersion>`.

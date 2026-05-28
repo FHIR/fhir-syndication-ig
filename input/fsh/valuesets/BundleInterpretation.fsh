@@ -2,7 +2,7 @@ ValueSet: BundleInterpretationVS
 Id: bundle-interpretation
 Title: "FHIR Bundle Interpretation"
 Description: """
-Permitted values for the `ncts:bundleInterpretation` element on an
+Permitted values for the `⟨ncts:bundleInterpretation⟩` element on an
 entry whose artefact is a FHIR Bundle. Hints at the publisher's
 view of the Bundle's contents. The consumer is not obliged to
 follow the hint.

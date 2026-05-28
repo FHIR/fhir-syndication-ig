@@ -6,7 +6,7 @@ An Atom 1.0 feed (RFC 4287) used to syndicate terminology releases.
 
 The default XML namespace is `http://www.w3.org/2005/Atom`. Feeds
 that use the NCTS ASF profile additionally declare the `ncts:`
-namespace and SHOULD include the `ncts:atomSyndicationFormatProfile`
+namespace and SHOULD include the `⟨ncts:atomSyndicationFormatProfile⟩`
 element identifying the profile version.
 
 A feed is an ordered collection of entries (RFC 4287 §4.1). Order
@@ -39,7 +39,7 @@ Characteristics: #can-be-target
   * href 1..1 uri "target URI"
 
 * atomSyndicationFormatProfile 0..1 uri "ASF profile version the feed conforms to"
-* atomSyndicationFormatProfile ^definition = "`ncts:atomSyndicationFormatProfile`. Identifies the ASF profile version this feed conforms to. Current value: `http://ns.electronichealth.net.au/ncts/syndication/asf/profile/1.0.0`. Required when any NCTS ASF extension is used in the feed."
+* atomSyndicationFormatProfile ^definition = "`⟨ncts:atomSyndicationFormatProfile⟩`. Identifies the ASF profile version this feed conforms to. Current value: `http://ns.electronichealth.net.au/ncts/syndication/asf/profile/1.0.0`. Required when any NCTS ASF extension is used in the feed."
 
 * entry 0..* SyndicationEntry "syndicated artefact entry"
 * entry ^definition = "Atom `⟨entry⟩` element. One per syndicated artefact set."

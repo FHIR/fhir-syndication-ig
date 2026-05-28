@@ -23,16 +23,16 @@ Structural model:
 
 ### Required NCTS ASF metadata
 
-Every entry MUST include the `ncts:contentItemIdentifier` and
-`ncts:contentItemVersion` elements. They are the fundamental keys
+Every entry MUST include the `<ncts:contentItemIdentifier>` and
+`<ncts:contentItemVersion>` elements. They are the fundamental keys
 that consumers use to identify and version artefacts.
 
 | Element | Meaning |
 |---------|---------|
-| `ncts:contentItemIdentifier` | Canonical, version-independent identifier. Stable across versions of the same logical artefact. |
-| `ncts:contentItemVersion` | Canonical, version-specific identifier for this exact release. |
+| `<ncts:contentItemIdentifier>` | Canonical, version-independent identifier. Stable across versions of the same logical artefact. |
+| `<ncts:contentItemVersion>` | Canonical, version-specific identifier for this exact release. |
 
-`ncts:contentItemVersion` MUST be unique within a feed — two entries
+`<ncts:contentItemVersion>` MUST be unique within a feed — two entries
 with the same value are duplicates.
 
 ### FHIR alignment
@@ -43,13 +43,13 @@ following alignments hold:
 
 | Atom field | FHIR resource field |
 |------------|---------------------|
-| `ncts:contentItemIdentifier` | `Resource.url` |
-| `ncts:contentItemVersion` | `Resource.url` + `\|` + `Resource.version` |
+| `<ncts:contentItemIdentifier>` | `Resource.url` |
+| `<ncts:contentItemVersion>` | `Resource.url` + `\|` + `Resource.version` |
 | `<published>` | `Resource.date` |
 | `<title>` | `Resource.title` (else `Resource.name`) |
 | `<rights>` | `Resource.copyright` |
-| `ncts:fhirVersion` | The FHIR version the resource is authored against |
-| `ncts:fhirProfile` | `Resource.meta.profile[*]` |
+| `<ncts:fhirVersion>` | The FHIR version the resource is authored against |
+| `<ncts:fhirProfile>` | `Resource.meta.profile[*]` |
 
 ### SNOMED CT alignment
 
@@ -57,11 +57,11 @@ When an entry's artefact is a SNOMED CT module:
 
 | Atom field | SNOMED CT mapping |
 |------------|-------------------|
-| `ncts:contentItemIdentifier` | `http://snomed.info/sct/<moduleId>` (unversioned module URI) |
-| `ncts:contentItemVersion` | `http://snomed.info/sct/<moduleId>/version/<YYYYMMDD>` (versioned module URI) |
+| `<ncts:contentItemIdentifier>` | `http://snomed.info/(x)?sct/<moduleId>` (unversioned module URI) |
+| `<ncts:contentItemVersion>` | `http://snomed.info/(x)?sct/<moduleId>/version/<YYYYMMDD>` (versioned module URI) |
 
 For a SNOMED CT extension or derivative, dependencies on other
-SNOMED packages are declared via `sct:packageDependency` — see
+SNOMED packages are declared via `<sct:packageDependency>` — see
 [SNOMED CT Extensions](sct-extensions.html).
 
 ### Retraction entries
@@ -76,19 +76,19 @@ Field-by-field rules:
 | Field | Retract-entry rule |
 |-------|--------------------|
 | `<category>` | At least one category MUST use a `*_RETRACT` term in the NCTS ASF scheme. |
-| `ncts:contentItemIdentifier` | Required. Identifies *what* is retracted. |
-| `ncts:contentItemVersion` | Required. Identifies *which version* — exactly. There is no blanket-retract semantics: to retract several versions, issue several entries. |
-| `ncts:fhirVersion` | Required for any `FHIR_*_RETRACT`. |
+| `<ncts:contentItemIdentifier>` | Required. Identifies *what* is retracted. |
+| `<ncts:contentItemVersion>` | Required. Identifies *which version* — exactly. There is no blanket-retract semantics: to retract several versions, issue several entries. |
+| `<ncts:fhirVersion>` | Required for any `FHIR_*_RETRACT`. |
 | `<link rel="alternate">` | **MUST NOT be present.** A retract has nothing to download. |
 | `<link rel="related">` | Permitted (e.g. a deprecation notice PDF). |
 | `<link>` overall | MAY be absent entirely. |
-| `sct:packageDependency` | SHOULD be absent. |
-| `ncts:bundleInterpretation` | SHOULD be absent. |
-| `ncts:fhirProfile` | SHOULD be absent. |
+| `<sct:packageDependency>` | SHOULD be absent. |
+| `<ncts:bundleInterpretation>` | SHOULD be absent. |
+| `<ncts:fhirProfile>` | SHOULD be absent. |
 | `<published>` | SHOULD be the time the retraction was issued. |
 | `<updated>` | As normal. |
 
-A consumer that has never installed the named `contentItemVersion`
+A consumer that has never installed the named `<ncts:contentItemVersion>`
 MUST silently no-op — there is no requirement that the retract
 entry's keys match any previously-published non-retract entry.
 

@@ -16,9 +16,9 @@ permission code is an opaque tag. The intended semantics are:
 - A consumer holds zero or more permission codes (assigned out of
   band — typically from claims in an OAuth 2.0 / OIDC access
   token).
-- An entry with no `onto:permission` elements is unrestricted at
+- An entry with no `<onto:permission>` elements is unrestricted at
   the entry level.
-- An entry with one or more `onto:permission` elements is
+- An entry with one or more `<onto:permission>` elements is
   accessible only to consumers holding **at least one** of the
   listed codes.
 - A publisher serving the feed over an authenticated channel MUST

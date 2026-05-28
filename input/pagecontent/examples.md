@@ -38,7 +38,7 @@ Notes:
   `rel="related"`.
 - `contentItemIdentifier` is the unversioned International Edition
   module URI; `contentItemVersion` adds `/version/20230430`.
-- No `sct:packageDependency` because Editions have no dependencies.
+- No `<sct:packageDependency>` because Editions have no dependencies.
 - Hash uses legacy `sct:md5Hash`.
 
 ### A SNOMED CT extension entry with dependencies
@@ -118,7 +118,7 @@ Notes:
 - `<published>` matches `ValueSet.date`; `contentItemIdentifier`
   matches `ValueSet.url`; `contentItemVersion` matches
   `ValueSet.url|ValueSet.version`.
-- `ncts:fhirVersion` is required because the category term is
+- `<ncts:fhirVersion>` is required because the category term is
   `FHIR_ValueSet`.
 
 ### A retract entry
@@ -147,7 +147,7 @@ Notes:
   separate retract entry is needed.
 - No `<link rel="alternate">`, by rule. The optional
   `rel="related"` link points to a deprecation notice.
-- `ncts:fhirVersion` is still required (rule applies to any
+- `<ncts:fhirVersion>` is still required (rule applies to any
   `FHIR_*` term, retract or not).
 - A consumer that never had `1.2.0` installed silently no-ops.
 
@@ -174,7 +174,7 @@ Notes:
 Notes:
 
 - Because the category is `FHIR_Bundle`, the entry MUST carry
-  `ncts:fhirVersion`. The `ncts:bundleInterpretation` element is
+  `<ncts:fhirVersion>`. The `<ncts:bundleInterpretation>` element is
   optional; when present (`batch` or `collection`) it hints at the
   publisher's view of the Bundle. The consumer remains free to
   handle the Bundle however it sees fit.

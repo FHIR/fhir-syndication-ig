@@ -24,7 +24,7 @@ namespaces.
 
 ### Entry-level elements
 
-#### `onto:permission`
+#### `<onto:permission>`
 
 A permission tag that gates access to this entry's artefacts. An
 entry MAY carry zero or more permissions. An empty set means no
