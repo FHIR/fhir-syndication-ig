@@ -16,10 +16,14 @@ Structural model:
 | `<summary>` | 0..1 | Short description. |
 | `<rights>` | 0..1 | Copyright / licence statement applicable to the artefact. |
 | `<published>` | 0..1 | The instant the artefact set was first issued by its publisher. See FHIR alignment below. |
-| `<updated>` | 1..1 | The instant this entry's metadata or artefacts last meaningfully changed. |
+| `<updated>` | 1..1 | The instant this entry last changed in a way the publisher considers significant ([RFC 4287 §4.2.15](https://www.rfc-editor.org/rfc/rfc4287#section-4.2.15)) — e.g. a new version, corrected metadata, or a re-validated artefact. See note below. |
 | `<author>` | 0..* | The party that produced the artefact. |
 | `<category>` | 1..* | Classifies the artefact. At least one MUST be present; at least one SHOULD use a registered scheme. See [Category Schemes](categories.html). |
 | `<link>` | 1..* | At least one. The primary artefact uses `rel="alternate"`; ancillary documents use `rel="related"`. See [SyndicationLink](StructureDefinition-syndication-link.html). |
+
+`<updated>` is really a publisher-significant timestamp, not just a mechanical last-touched one.
+A publisher MAY derive it from a FHIR resource's `meta.lastUpdated`, and doing so is not wrong — but it may be sub-optimal.
+Bumping `<updated>` when nothing meaningful changed may create spurious re-processing, but the server itself may not be able to decide this on its own.
 
 ### Required NCTS ASF metadata
 
