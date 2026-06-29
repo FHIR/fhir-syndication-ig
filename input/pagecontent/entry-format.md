@@ -9,9 +9,17 @@ Structural model:
 
 ### Atom core elements
 
+Most elements in an entry describe the **artefact** the entry points to
+(`<title>`, `<summary>`, `<rights>`, `<published>`, `<author>`,
+`<category>`, `<link>`, and the [NCTS ASF metadata](#required-ncts-asf-metadata)
+below). Only `<id>` and `<updated>` describe the **entry itself**. In
+particular, `<id>` is the identity of the *entry*, which is distinct from the
+identity of the *artefact* — that is carried by
+`<ncts:contentItemIdentifier>` / `<ncts:contentItemVersion>`.
+
 | Element | Card | Meaning / Constraint |
 |---------|------|----------------------|
-| `<id>` | 1..1 | Stable, globally-unique identifier. Conventionally `urn:uuid:<uuid>`. **MUST NOT** change when the entry is updated. |
+| `<id>` | 1..1 | Stable, globally-unique identifier **of this feed entry** (not of the artefact — see `<ncts:contentItemIdentifier>` below). Conventionally `urn:uuid:<uuid>`. **MUST NOT** change when the entry is updated. |
 | `<title>` | 1..1 | Human-readable name of the artefact. |
 | `<summary>` | 0..1 | Short description. |
 | `<rights>` | 0..1 | Copyright / licence statement applicable to the artefact. |
