@@ -151,6 +151,48 @@ Notes:
   `FHIR_*` term, retract or not).
 - A consumer that never had `1.2.0` installed silently no-ops.
 
+### A dual-conformant CRMI withdrawal entry
+
+This is the [retract entry](#a-retract-entry) above, extended so that the same
+entry is also understood by an HL7 CRMI syndication consumer. See
+[Relationship to HL7 CRMI](relationship-crmi.html) for the full mapping.
+
+```xml
+<entry xmlns:ncts="http://ns.electronichealth.net.au/ncts/syndication/asf/extensions/1.0.0"
+       xmlns:hl7="http://hl7.org/fhir/uv/crmi/syndication">
+  <title>Australian Body Sites — RETRACTED</title>
+  <category term="FHIR_ValueSet_RETRACT" label="FHIR ValueSet Retract"
+            scheme="http://ns.electronichealth.net.au/ncts/syndication/asf/scheme/1.0.0"/>
+  <hl7:artifactType>resource</hl7:artifactType>
+  <hl7:publishAction>unpublish</hl7:publishAction>
+  <id>urn:uuid:5c1f…</id>
+  <updated>2024-08-02T11:00:00Z</updated>
+  <published>2024-08-02T11:00:00Z</published>
+  <ncts:contentItemIdentifier>http://example.org/fhir/ValueSet/au-body-sites</ncts:contentItemIdentifier>
+  <ncts:contentItemVersion>http://example.org/fhir/ValueSet/au-body-sites|1.2.0</ncts:contentItemVersion>
+  <hl7:artifactVersion>1.2.0</hl7:artifactVersion>
+  <ncts:fhirVersion>4.0.1</ncts:fhirVersion>
+  <hl7:fhirVersion>4.0.1</hl7:fhirVersion>
+  <!-- CRMI delete transaction Bundle, offered as related (NOT alternate) -->
+  <link rel="related" type="application/fhir+json"
+        href="https://example.org/fhir/Bundle/delete-au-body-sites-1.2.0"/>
+</entry>
+```
+
+Notes:
+
+- ASF signals the withdrawal via the `FHIR_ValueSet_RETRACT` category; CRMI
+  signals it via `<hl7:publishAction>unpublish`. Both are present, so either
+  consumer recognises it.
+- The delete transaction Bundle is delivered at `rel="related"`, **not**
+  `rel="alternate"` — this keeps the entry valid as an ASF retraction (which
+  forbids `rel="alternate"`) while still exposing CRMI's action Bundle. This is
+  the one point requiring a CRMI consumer to honour `rel="related"`; see the
+  [harmonisation note](relationship-crmi.html#overlap-differences-and-the-one-conflict).
+- `<hl7:artifactVersion>` is included even though CRMI's own `unpublish` example
+  omits it — making the exact retracted version explicit on the entry rather
+  than only inside the Bundle.
+
 ### A FHIR Bundle entry
 
 ```xml

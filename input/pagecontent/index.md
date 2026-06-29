@@ -224,6 +224,8 @@ It does not describe any specific publishing or consuming software.
   [Ontoserver Extensions](onto-extensions.html) — element-by-element
   reference for each extension namespace
 - [Security](security.html) — the per-entry permission mechanism
+- [Relationship to HL7 CRMI](relationship-crmi.html) — how this feed
+  relates to CRMI's Atom syndication, and how one entry conforms to both
 - [Examples](examples.html) — annotated real-world feed fragments
 
 ### Known public feeds

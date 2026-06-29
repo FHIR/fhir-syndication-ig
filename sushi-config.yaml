@@ -45,6 +45,8 @@ pages:
     title: Category Schemes
   security.md:
     title: Security
+  relationship-crmi.md:
+    title: Relationship to HL7 CRMI
   examples.md:
     title: Examples
 
@@ -59,6 +61,7 @@ menu:
     SNOMED CT: sct-extensions.html
     Ontoserver: onto-extensions.html
   Security: security.html
+  CRMI: relationship-crmi.html
   Examples: examples.html
   Artifacts: artifacts.html
   GitHub: https://github.com/FHIR/fhir-syndication-ig
