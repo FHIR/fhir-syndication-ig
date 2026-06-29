@@ -1,6 +1,6 @@
 ValueSet: SyndicationContentTypeVS
 Id: syndication-content-type
-Title: "Terminology Syndication Content Type"
+Title: "Terminology Syndication Content Type Value Set"
 Description: """
 All codes from the NCTS ASF category scheme. Used to classify the
 artefact carried by a syndication entry.
